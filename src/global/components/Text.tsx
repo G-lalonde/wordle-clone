@@ -5,20 +5,20 @@ import { Text as DefaultText } from "react-native";
 export const Text = (props: TextProps) => {
   const { style, ...otherProps } = props;
   const textStyle = style as TextStyle;
-  let fontFamily = "mulish";
+  let fontFamily = "open_sans";
 
   switch (textStyle.fontWeight) {
     case "bold":
     case "700":
-      fontFamily = "mulish_bold";
+      fontFamily = "open_sans_bold";
       break;
 
     case "600":
-      fontFamily = "mulish_semi_bold";
+      fontFamily = "open_sans_semi_bold";
       break;
 
     default:
-      fontFamily = "mulish";
+      fontFamily = "open_sans";
 
       break;
   }

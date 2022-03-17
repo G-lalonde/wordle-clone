@@ -29,7 +29,7 @@ interface FetchSuccess {
 
 interface FetchFailed {
   type: typeof FETCH_FAILED;
-  payload: String;
+  payload: string;
 }
 
 export type FetchDispatchType = FetchRequest | FetchSuccess | FetchFailed;

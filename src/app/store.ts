@@ -1,4 +1,5 @@
 import { counterReducer } from "@/features/counter";
+import { wordleReducer } from "@/features/wordle";
 
 import {
   Action,
@@ -21,6 +22,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // PUT ALL REGISTERED REDUCERS HERE
 export const rootReducer = combineReducers({
   counter: counterReducer,
+  wordle: wordleReducer,
 });
 
 export const store = createStore(

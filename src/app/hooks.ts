@@ -10,7 +10,11 @@ import {
 import { AppDispatch, RootState } from "./store";
 export const useDispatch = () => useReduxDispatch<AppDispatch>();
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
-import { Mulish_600SemiBold, Mulish_700Bold } from "@expo-google-fonts/mulish";
+import {
+  OpenSans_400Regular,
+  OpenSans_600SemiBold,
+  OpenSans_700Bold,
+} from "@expo-google-fonts/open-sans";
 
 export function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -24,9 +28,9 @@ export function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...FontAwesome.font,
-          mulish: require("../../assets/fonts/Mulish-VariableFont_wght.ttf"),
-          mulish_semi_bold: Mulish_600SemiBold,
-          mulish_bold: Mulish_700Bold,
+          open_sans: OpenSans_400Regular,
+          open_sans_semi_bold: OpenSans_600SemiBold,
+          open_sans_bold: OpenSans_700Bold,
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

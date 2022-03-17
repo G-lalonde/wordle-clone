@@ -1,0 +1,38 @@
+@startuml MDD
+skinparam style strictuml
+hide methods
+hide empty members
+title Wordle - Diagramme de composants
+
+class LettreClavier {
+  lettre: char
+}
+
+class BoutonClavier {
+  caractere: char
+}
+
+class Clavier {
+  lettres: LettreClavier[]
+  boutons: BoutonClavier[]
+}
+
+class LettreAffichage {
+  lettre: char
+  couleur: Color
+}
+
+class RowAffichage {
+    lettres: LettreAffichage[]
+}
+
+class GrilleAffichage {
+    row: RowAffichage[]
+}
+
+GrilleAffichage "1" -down- "5" RowAffichage : Contient >
+RowAffichage "1" -down- "5" LettreAffichage : Contient >
+Clavier "1" -down- "26" LettreClavier: Contient >
+Clavier "1" -down- "2" BoutonClavier: Contient >
+
+@enduml

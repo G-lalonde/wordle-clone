@@ -1,7 +1,7 @@
 import React from "react";
 
-import Base from "@/features/counter/components/Base";
+import { GrilleAffichage } from "@/features/wordle/components/GrilleAffichage";
 
 export function FirstScreen() {
-  return <Base />;
+  return <GrilleAffichage />;
 }

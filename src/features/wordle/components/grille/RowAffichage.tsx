@@ -5,11 +5,13 @@ import { LetterState, LettreAffichage } from "./LettreAffichage";
 
 interface RowAffichageProps {
   lettres: string[];
+  rowIndex: number;
 }
 
-export const RowAffichage = ({ lettres }: RowAffichageProps) => {
-  const { answer } = useSelector(state => state.wordle);
+export const RowAffichage = ({ lettres, rowIndex }: RowAffichageProps) => {
+  const { answer, currentWordIndex } = useSelector(state => state.wordle);
 
+  const currentlyFillingRow = currentWordIndex === rowIndex;
   const lettre1 = lettres[0];
   const lettre2 = lettres[1];
   const lettre3 = lettres[2];
@@ -20,23 +22,23 @@ export const RowAffichage = ({ lettres }: RowAffichageProps) => {
     <View style={styles.flexContainer}>
       <LettreAffichage
         lettre={lettre1}
-        state={getLetterState(lettre1, 0, answer)}
+        state={getLetterState(lettre1, 0, currentlyFillingRow, answer)}
       />
       <LettreAffichage
         lettre={lettre2}
-        state={getLetterState(lettre2, 1, answer)}
+        state={getLetterState(lettre2, 1, currentlyFillingRow, answer)}
       />
       <LettreAffichage
         lettre={lettre3}
-        state={getLetterState(lettre3, 2, answer)}
+        state={getLetterState(lettre3, 2, currentlyFillingRow, answer)}
       />
       <LettreAffichage
         lettre={lettre4}
-        state={getLetterState(lettre4, 3, answer)}
+        state={getLetterState(lettre4, 3, currentlyFillingRow, answer)}
       />
       <LettreAffichage
         lettre={lettre5}
-        state={getLetterState(lettre5, 4, answer)}
+        state={getLetterState(lettre5, 4, currentlyFillingRow, answer)}
       />
     </View>
   );
@@ -45,11 +47,12 @@ export const RowAffichage = ({ lettres }: RowAffichageProps) => {
 const getLetterState = (
   letter: string,
   letterIndex: number,
+  currentlyFillingRow: boolean,
   answer: string,
 ) => {
   let state = LetterState.empty;
 
-  if (!letter) {
+  if (!letter || currentlyFillingRow) {
     state = LetterState.empty;
   } else if (answer[letterIndex] === letter) {
     state = LetterState.correct;

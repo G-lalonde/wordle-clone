@@ -1,6 +1,5 @@
-import { Text } from "@/global";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export enum LetterState {
   empty,
@@ -20,7 +19,15 @@ export const LettreAffichage = ({
 }: LettreAffichageProps) => {
   return (
     <View style={[styles.box, { backgroundColor: selectColor(state) }]}>
-      <Text style={styles.text}>{lettre}</Text>
+      <Text
+        style={[
+          styles.text,
+          {
+            color: state == LetterState.empty ? "black" : "white",
+          },
+        ]}>
+        {lettre}
+      </Text>
     </View>
   );
 };
@@ -48,7 +55,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 32,
     textTransform: "uppercase",
-    fontWeight: "bold",
+    fontFamily: "open_sans_bold",
   },
   box: {
     width: 62,

@@ -1,61 +1,74 @@
 import {
+  ADD_ALMOST_LETTER,
+  ADD_CORRECT_LETTER,
+  ADD_WRONG_LETTER,
   SET_ANSWER,
-  SET_WORD1,
-  SET_WORD2,
-  SET_WORD3,
-  SET_WORD4,
-  SET_WORD5,
+  SET_WORD,
+  SET_WORD_INDEX,
+  WordleActionTypes,
 } from "../actions/wordleActionsTypes";
 
 type InitialState = {
-  mot1: string;
-  mot2: string;
-  mot3: string;
-  mot4: string;
-  mot5: string;
+  mots: string[];
+  correctLetters: string[];
+  almostCorrectLetters: string[];
+  wrongLetters: string[];
   answer: string;
+  currentWordIndex: number;
 };
 
 const initialState: InitialState = {
-  mot1: "chov1",
-  mot2: "chov2",
-  mot3: "chov3",
-  mot4: "cho",
-  mot5: "",
-  answer: "hcove",
+  mots: ["", "", "", "", "", ""],
+  correctLetters: [] as string[],
+  almostCorrectLetters: [] as string[],
+  wrongLetters: [] as string[],
+  answer: "elise",
+  currentWordIndex: 0,
 };
 
-export const wordleReducer = (state = initialState, action: any) => {
+export const wordleReducer = (
+  state = initialState,
+  action: WordleActionTypes,
+) => {
   switch (action.type) {
-    case SET_WORD1:
+    case SET_WORD:
+      state.mots[state.currentWordIndex] = action.payload;
+
       return {
         ...state,
-        mot1: action.payload,
       };
-    case SET_WORD2:
+
+    case ADD_CORRECT_LETTER:
+      state.correctLetters.push(action.payload);
+
       return {
         ...state,
-        mot2: action.payload,
       };
-    case SET_WORD3:
+
+    case ADD_ALMOST_LETTER:
+      state.almostCorrectLetters.push(action.payload);
+
       return {
         ...state,
-        mot3: action.payload,
       };
-    case SET_WORD4:
+
+    case ADD_WRONG_LETTER:
+      state.wrongLetters.push(action.payload);
+
       return {
         ...state,
-        mot4: action.payload,
       };
-    case SET_WORD5:
-      return {
-        ...state,
-        mot5: action.payload,
-      };
+
     case SET_ANSWER:
       return {
         ...state,
         answer: action.payload,
+      };
+
+    case SET_WORD_INDEX:
+      return {
+        ...state,
+        currentWordIndex: action.payload,
       };
 
     default:

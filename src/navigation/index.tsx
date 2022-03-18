@@ -1,5 +1,4 @@
-import { FirstScreen, SecondScreen } from "@/screens";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { FirstScreen } from "@/screens";
 import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
 

@@ -1,36 +1,44 @@
-export const SET_WORD1 = "SET_WORD1";
-export const SET_WORD2 = "SET_WORD2";
-export const SET_WORD3 = "SET_WORD3";
-export const SET_WORD4 = "SET_WORD4";
-export const SET_WORD5 = "SET_WORD5";
+export const SET_WORD = "SET_WORD";
+export const ADD_CORRECT_LETTER = "ADD_CORRECT_LETTER";
+export const ADD_ALMOST_LETTER = "ADD_ALMOST_LETTER";
+export const ADD_WRONG_LETTER = "ADD_WRONG_LETTER";
 export const SET_ANSWER = "SET_ANSWER";
+export const SET_WORD_INDEX = "SET_WORD_INDEX";
 
 export interface SetAnswer {
   type: typeof SET_ANSWER;
   payload: string;
 }
 
-export interface SetWord1 {
-  type: typeof SET_WORD1;
+export interface SetWord {
+  type: typeof SET_WORD;
   payload: string;
 }
 
-export interface SetWord2 {
-  type: typeof SET_WORD2;
+export interface AddCorrectLetter {
+  type: typeof ADD_CORRECT_LETTER;
   payload: string;
 }
 
-export interface SetWord3 {
-  type: typeof SET_WORD3;
+export interface AddAlmostLetter {
+  type: typeof ADD_ALMOST_LETTER;
   payload: string;
 }
 
-export interface SetWord4 {
-  type: typeof SET_WORD4;
+export interface AddWrongLetter {
+  type: typeof ADD_WRONG_LETTER;
   payload: string;
 }
 
-export interface SetWord5 {
-  type: typeof SET_WORD5;
-  payload: string;
+export interface SetWordIndex {
+  type: typeof SET_WORD_INDEX;
+  payload: number;
 }
+
+export type WordleActionTypes =
+  | SetAnswer
+  | SetWord
+  | AddCorrectLetter
+  | AddAlmostLetter
+  | AddWrongLetter
+  | SetWordIndex;

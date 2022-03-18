@@ -4,15 +4,15 @@ import { StyleSheet, View } from "react-native";
 import { RowAffichage } from "./RowAffichage";
 
 export const GrilleAffichage = () => {
-  const { mot1, mot2, mot3, mot4, mot5 } = useSelector(state => state.wordle);
+  const { mots } = useSelector(state => state.wordle);
 
   return (
     <View style={styles.flexContainer}>
-      <RowAffichage lettres={mot1} />
-      <RowAffichage lettres={mot2} />
-      <RowAffichage lettres={mot3} />
-      <RowAffichage lettres={mot4} />
-      <RowAffichage lettres={mot5} />
+      {mots.map((mot: string, index: number) => {
+        return (
+          <RowAffichage key={index} lettres={mot.split("")} rowIndex={index} />
+        );
+      })}
     </View>
   );
 };
@@ -23,6 +23,5 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "aliceblue",
   },
 });

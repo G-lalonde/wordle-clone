@@ -1,9 +1,11 @@
+import { ANSWER } from "@/app/constants";
 import {
   ADD_ALMOST_LETTER,
   ADD_CORRECT_LETTER,
   ADD_WRONG_LETTER,
   SET_ANSWER,
   SET_WORD,
+  SET_HAS_WON,
   SET_WORD_INDEX,
   WordleActionTypes,
 } from "../actions/wordleActionsTypes";
@@ -15,6 +17,7 @@ type InitialState = {
   wrongLetters: string[];
   answer: string;
   currentWordIndex: number;
+  hasWon: boolean;
 };
 
 const initialState: InitialState = {
@@ -22,8 +25,9 @@ const initialState: InitialState = {
   correctLetters: [] as string[],
   almostCorrectLetters: [] as string[],
   wrongLetters: [] as string[],
-  answer: "elise",
+  answer: ANSWER,
   currentWordIndex: 0,
+  hasWon: false,
 };
 
 export const wordleReducer = (
@@ -69,6 +73,12 @@ export const wordleReducer = (
       return {
         ...state,
         currentWordIndex: action.payload,
+      };
+
+    case SET_HAS_WON:
+      return {
+        ...state,
+        hasWon: action.payload,
       };
 
     default:

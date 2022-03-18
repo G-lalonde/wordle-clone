@@ -4,6 +4,7 @@ export const ADD_ALMOST_LETTER = "ADD_ALMOST_LETTER";
 export const ADD_WRONG_LETTER = "ADD_WRONG_LETTER";
 export const SET_ANSWER = "SET_ANSWER";
 export const SET_WORD_INDEX = "SET_WORD_INDEX";
+export const SET_HAS_WON = "SET_HAS_WON";
 
 export interface SetAnswer {
   type: typeof SET_ANSWER;
@@ -35,10 +36,16 @@ export interface SetWordIndex {
   payload: number;
 }
 
+export interface SetHasWon {
+  type: typeof SET_HAS_WON;
+  payload: boolean;
+}
+
 export type WordleActionTypes =
   | SetAnswer
   | SetWord
   | AddCorrectLetter
   | AddAlmostLetter
   | AddWrongLetter
+  | SetHasWon
   | SetWordIndex;

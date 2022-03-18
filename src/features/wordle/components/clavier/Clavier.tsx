@@ -1,6 +1,14 @@
+import { ROW_COUT } from "@/app/constants";
+import { useDispatch, useSelector } from "@/app/hooks";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { BackButtonClavier } from "./BackButtonClavier";
+import {
+  setWord,
+  addCorrectLetter,
+  addAlmostLetter,
+  addWrongLetter,
+  setWordIndex,
+} from "../../actions/wordleActions";
 import { RowClavier } from "./RowClavier";
 
 export const Clavier = () => {
@@ -15,7 +23,6 @@ export const Clavier = () => {
 
 const styles = StyleSheet.create({
   flexContainer: {
-    // bottom: 50,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",

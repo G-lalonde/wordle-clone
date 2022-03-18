@@ -6,9 +6,11 @@ import {
   ADD_CORRECT_LETTER,
   ADD_WRONG_LETTER,
   SetAnswer,
+  SetHasWon,
   SetWord,
   SetWordIndex,
   SET_ANSWER,
+  SET_HAS_WON,
   SET_WORD,
   SET_WORD_INDEX,
 } from "./wordleActionsTypes";
@@ -41,4 +43,9 @@ export const addWrongLetter = (letter: string): AddWrongLetter => ({
 export const setWordIndex = (index: number): SetWordIndex => ({
   type: SET_WORD_INDEX,
   payload: index,
+});
+
+export const setHasWon = (hasWon: boolean): SetHasWon => ({
+  type: SET_HAS_WON,
+  payload: hasWon,
 });

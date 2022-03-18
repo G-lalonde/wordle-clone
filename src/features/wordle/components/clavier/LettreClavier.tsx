@@ -1,20 +1,33 @@
-import { useSelector } from "@/app/hooks";
+import { ROW_COUT } from "@/app/constants";
+import { useDispatch, useSelector } from "@/app/hooks";
 import { Text } from "@/global";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { setWord } from "../../actions/wordleActions";
 
 interface LettreClavierProps {
   lettre: string;
-  onLetterClick: () => void;
 }
 
-export const LettreClavier = ({
-  lettre,
-  onLetterClick,
-}: LettreClavierProps) => {
-  const { almostCorrectLetters, correctLetters, wrongLetters } = useSelector(
-    state => state.wordle,
-  );
+export const LettreClavier = ({ lettre }: LettreClavierProps) => {
+  const {
+    almostCorrectLetters,
+    correctLetters,
+    wrongLetters,
+    mots,
+    hasWon,
+    currentWordIndex,
+  } = useSelector(state => state.wordle);
+
+  const dispatch = useDispatch();
+
+  const onLetterClick = () => {
+    if (hasWon || currentWordIndex >= ROW_COUT) return;
+    if (mots[currentWordIndex].length < ROW_COUT - 1) {
+      const updatedWord = mots[currentWordIndex] + lettre;
+      dispatch(setWord(updatedWord));
+    }
+  };
 
   return (
     <TouchableOpacity onPress={onLetterClick}>

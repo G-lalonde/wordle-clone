@@ -4,35 +4,75 @@ hide methods
 hide empty members
 title Wordle - Diagramme de composants
 
-class LettreClavier {
-  lettre: char
+package "Reduced State" {
+  class AppState {
+    mots: string[];
+    correctLetters: string[];
+    almostCorrectLetters: string[];
+    wrongLetters: string[];
+    answer: string;
+    currentWordIndex: number;
+    hasWon: boolean;
+  }
 }
 
-class BoutonClavier {
-  caractere: char
+package "Actions" {
+  class Actions {
+    setAnswer: string
+    setWord: string
+    addCorrectLetter: string
+    addAlmostLetter: string
+    addWrongLetter: string
+    setWordIndex: number
+    setHasWon: boolean
+  }
 }
 
-class Clavier {
-  lettres: LettreClavier[]
-  boutons: BoutonClavier[]
-}
+package "Components" {
+  class LettreClavier {
+    lettre: char
+  }
 
-class LettreAffichage {
-  lettre: char
-  couleur: Color
-}
+  class BackButtonClavier {
+    caractere: char
+  }
 
-class RowAffichage {
-    lettres: LettreAffichage[]
-}
+  class EnterButtonClavier {
+    caractere: char
+  }
 
-class GrilleAffichage {
-    row: RowAffichage[]
+  class Clavier {
+    rows: RowClavier[]
+  }
+
+  class RowClavier {
+    lettres: LettreClavier[]
+    backButton?: BackButtonClavier
+    enterButton?: EnterButtonClavier
+  }
+
+  class LettreAffichage {
+    lettre: char
+    couleur: Color
+  }
+
+  class RowAffichage {
+      lettres: LettreAffichage[]
+  }
+
+  class GrilleAffichage {
+      row: RowAffichage[]
+  }
 }
 
 GrilleAffichage "1" -down- "5" RowAffichage : Contient >
 RowAffichage "1" -down- "5" LettreAffichage : Contient >
-Clavier "1" -down- "26" LettreClavier: Contient >
-Clavier "1" -down- "2" BoutonClavier: Contient >
+Clavier "1" -down- "3" RowClavier: Contient >
+RowClavier "1" -down- "26" LettreClavier: Contient >
+RowClavier "1" -down- "0..1" BackButtonClavier: Contient >
+RowClavier "1" -down- "0..1" EnterButtonClavier: Contient >
+Components -up- Actions: Dispatch >
+Actions -right- "Reduced State": Gets reduced >
+Components -down- "Reduced State": < Reads
 
 @enduml

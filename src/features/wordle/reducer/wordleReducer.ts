@@ -1,3 +1,5 @@
+import update from "react-addons-update";
+
 import { ANSWER } from "@/app/constants";
 import {
   ADD_ALMOST_LETTER,
@@ -36,31 +38,28 @@ export const wordleReducer = (
 ) => {
   switch (action.type) {
     case SET_WORD:
-      state.mots[state.currentWordIndex] = action.payload;
-
-      return {
-        ...state,
-      };
+      return update(state, {
+        mots: {
+          [state.currentWordIndex]: { $set: action.payload },
+        },
+      });
 
     case ADD_CORRECT_LETTER:
-      state.correctLetters.push(action.payload);
-
       return {
         ...state,
+        correctLetters: [...state.correctLetters, action.payload],
       };
 
     case ADD_ALMOST_LETTER:
-      state.almostCorrectLetters.push(action.payload);
-
       return {
         ...state,
+        almostCorrectLetters: [...state.almostCorrectLetters, action.payload],
       };
 
     case ADD_WRONG_LETTER:
-      state.wrongLetters.push(action.payload);
-
       return {
         ...state,
+        wrongLetters: [...state.wrongLetters, action.payload],
       };
 
     case SET_ANSWER:

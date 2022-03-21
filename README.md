@@ -20,4 +20,4 @@ expo start
 
 ## Screenshots
 
-![screenshot](assets/screenshot.png)
+<img src="assets/screenshot.png" alt="screenshot" width="300"/>

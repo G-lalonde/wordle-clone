@@ -5,6 +5,8 @@ export const ADD_WRONG_LETTER = "ADD_WRONG_LETTER";
 export const SET_ANSWER = "SET_ANSWER";
 export const SET_WORD_INDEX = "SET_WORD_INDEX";
 export const SET_HAS_WON = "SET_HAS_WON";
+export const SET_NUMBER_OF_TRIES = "SET_NUMBER_OF_TRIES";
+export const RESET_ATTEMPT = "RESET_ATTEMPT";
 
 export interface SetAnswer {
   type: typeof SET_ANSWER;
@@ -39,6 +41,15 @@ export interface SetWordIndex {
 export interface SetHasWon {
   type: typeof SET_HAS_WON;
   payload: boolean;
+}
+
+export interface SetNumberOfTries {
+  type: typeof SET_NUMBER_OF_TRIES;
+  payload: number;
+}
+
+export interface ResetAttempt {
+  type: typeof RESET_ATTEMPT;
 }
 
 export type WordleActionTypes =

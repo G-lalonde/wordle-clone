@@ -1,51 +1,47 @@
-import {
-  AddAlmostLetter,
-  AddCorrectLetter,
-  AddWrongLetter,
-  ADD_ALMOST_LETTER,
-  ADD_CORRECT_LETTER,
-  ADD_WRONG_LETTER,
-  SetAnswer,
-  SetHasWon,
-  SetWord,
-  SetWordIndex,
-  SET_ANSWER,
-  SET_HAS_WON,
-  SET_WORD,
-  SET_WORD_INDEX,
-} from "./wordleActionsTypes";
+import * as types from "./wordleActionsTypes";
 
-export const setAnswer = (word: string): SetAnswer => ({
-  type: SET_ANSWER,
+export const setAnswer = (word: string): types.SetAnswer => ({
+  type: types.SET_ANSWER,
   payload: word,
 });
 
-export const setWord = (word: string): SetWord => ({
-  type: SET_WORD,
+export const setWord = (word: string): types.SetWord => ({
+  type: types.SET_WORD,
   payload: word,
 });
 
-export const addCorrectLetter = (letter: string): AddCorrectLetter => ({
-  type: ADD_CORRECT_LETTER,
+export const addCorrectLetter = (letter: string): types.AddCorrectLetter => ({
+  type: types.ADD_CORRECT_LETTER,
   payload: letter,
 });
 
-export const addAlmostLetter = (letter: string): AddAlmostLetter => ({
-  type: ADD_ALMOST_LETTER,
+export const addAlmostLetter = (letter: string): types.AddAlmostLetter => ({
+  type: types.ADD_ALMOST_LETTER,
   payload: letter,
 });
 
-export const addWrongLetter = (letter: string): AddWrongLetter => ({
-  type: ADD_WRONG_LETTER,
+export const addWrongLetter = (letter: string): types.AddWrongLetter => ({
+  type: types.ADD_WRONG_LETTER,
   payload: letter,
 });
 
-export const setWordIndex = (index: number): SetWordIndex => ({
-  type: SET_WORD_INDEX,
+export const setWordIndex = (index: number): types.SetWordIndex => ({
+  type: types.SET_WORD_INDEX,
   payload: index,
 });
 
-export const setHasWon = (hasWon: boolean): SetHasWon => ({
-  type: SET_HAS_WON,
+export const setHasWon = (hasWon: boolean): types.SetHasWon => ({
+  type: types.SET_HAS_WON,
   payload: hasWon,
+});
+
+export const setNumberOfTries = (
+  numberOfTries: number,
+): types.SetNumberOfTries => ({
+  type: types.SET_NUMBER_OF_TRIES,
+  payload: numberOfTries,
+});
+
+export const resetAttempt = (): types.ResetAttempt => ({
+  type: types.RESET_ATTEMPT,
 });

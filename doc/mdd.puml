@@ -13,6 +13,7 @@ package "Reduced State" {
     answer: string;
     currentWordIndex: number;
     hasWon: boolean;
+    numberOfTries: number;
   }
 }
 
@@ -25,6 +26,8 @@ package "Actions" {
     addWrongLetter: string
     setWordIndex: number
     setHasWon: boolean
+    setNumberOfTries: number
+    resetAttempt: void
   }
 }
 
@@ -62,6 +65,11 @@ package "Components" {
 
   class GrilleAffichage {
       row: RowAffichage[]
+  }
+
+  class Details {
+      answer: string
+      numberOfTries: number
   }
 }
 

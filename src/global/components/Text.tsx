@@ -7,20 +7,22 @@ export const Text = (props: TextProps) => {
   const textStyle = style as TextStyle;
   let fontFamily = "open_sans";
 
-  switch (textStyle.fontWeight) {
-    case "bold":
-    case "700":
-      fontFamily = "open_sans_bold";
-      break;
+  if (textStyle.fontWeight !== undefined) {
+    switch (textStyle.fontWeight) {
+      case "bold":
+      case "700":
+        fontFamily = "open_sans_bold";
+        break;
 
-    case "600":
-      fontFamily = "open_sans_semi_bold";
-      break;
+      case "600":
+        fontFamily = "open_sans_semi_bold";
+        break;
 
-    default:
-      fontFamily = "open_sans";
+      default:
+        fontFamily = "open_sans";
 
-      break;
+        break;
+    }
   }
 
   return <DefaultText style={[style, { fontFamily }]} {...otherProps} />;

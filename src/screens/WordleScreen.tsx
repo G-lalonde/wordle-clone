@@ -1,18 +1,16 @@
+import { ROW_COUT } from "@/app/constants";
 import { useSelector } from "@/app/hooks";
 import { Clavier } from "@/features/wordle/components/clavier/Clavier";
 import { GrilleAffichage } from "@/features/wordle/components/grille/GrilleAffichage";
 import React, { useEffect } from "react";
-import { StyleSheet, View } from "react-native";
-import { Text } from "@/global";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Toast, {
-  BaseToast,
-  ErrorToast,
   ToastConfig,
+  ToastConfigParams,
 } from "react-native-toast-message";
-import { ROW_COUT } from "@/app/constants";
 
-export function FirstScreen() {
+export function WordleScreen() {
   const { answer, mots, currentWordIndex } = useSelector(state => state.wordle);
 
   useEffect(() => {
@@ -42,24 +40,9 @@ export function FirstScreen() {
 }
 
 const toastConfig: ToastConfig = {
-  default: ({ props }) => (
-    <View
-      style={{
-        height: 60,
-        backgroundColor: "black",
-        borderRadius: 10,
-        justifyContent: "center",
-        alignContent: "center",
-        paddingHorizontal: 20,
-      }}>
-      <Text
-        style={{
-          color: "white",
-          textTransform: "uppercase",
-          fontWeight: "700",
-        }}>
-        {props.answer}
-      </Text>
+  default: ({ props }: ToastConfigParams<any>) => (
+    <View style={styles.textBox}>
+      <Text style={styles.text}>{props.answer}</Text>
     </View>
   ),
 };
@@ -70,5 +53,18 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
     backgroundColor: "#fff",
+  },
+  textBox: {
+    height: 60,
+    backgroundColor: "black",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignContent: "center",
+    paddingHorizontal: 20,
+  },
+  text: {
+    color: "white",
+    textTransform: "uppercase",
+    fontWeight: "700",
   },
 });

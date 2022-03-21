@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: 32,
-    height: 58,
+    height: 50,
     marginHorizontal: 2.5,
     backgroundColor: "transparent",
     borderColor: "lightgray",

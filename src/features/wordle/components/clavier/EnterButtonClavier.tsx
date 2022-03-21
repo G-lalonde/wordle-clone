@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: 52,
-    height: 58,
+    height: 50,
     marginHorizontal: 2.5,
     borderColor: "lightgray",
     borderRadius: 5,

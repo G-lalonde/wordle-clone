@@ -1,5 +1,7 @@
 # Wordle clone
 
+Wordle clone for school assignement
+
 ## To run the app with [Expo](https://docs.expo.dev/get-started/installation/)
 
 ### Install dependencies once
@@ -20,4 +22,5 @@ expo start
 
 ## Screenshots
 
+<img src="assets/screenshot2.png" alt="screenshot" width="300"/>
 <img src="assets/screenshot.png" alt="screenshot" width="300"/>

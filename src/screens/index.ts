@@ -1,1 +1,2 @@
-export { FirstScreen } from "./FirstScreen";
+export { WordleScreen } from "./WordleScreen";
+export { DetailsScreen } from "./DetailsScreen";
